@@ -1,0 +1,99 @@
+<template>
+  <v-container>
+    <v-col class="d-flex align-center justify-center">
+      <h1 class="custom-title">{{ $t('articles_title') }}</h1>
+    </v-col>
+    <v-card>
+      <v-card-title>
+        <v-text-field
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Search"
+          single-line
+          hide-details
+        ></v-text-field>
+      </v-card-title>
+      <v-data-table
+      :loading="loading"
+      :headers="headers"
+      :items="items"
+      :search="search"
+      @click:row="handleClick"
+      ></v-data-table>
+    </v-card>
+
+  </v-container>
+</template>
+
+<script>
+import axios from "axios"
+export default {
+  data () {
+    return {
+      search: '',
+      headers: [
+        { text: 'Id', value: 'id'},
+        { text: 'Title', value: 'title' },
+        { text: 'Volume', value: 'volume' },
+        { text: 'Page', value: 'page' },
+        { text: 'Date', value: 'date' },
+        { text: 'Author', value: 'author' },
+        { text: 'Language', value: 'language' },
+        { text: 'Type', value: 'type' },
+        { text: 'Pdf', value: 'blob' },
+      ],
+      items: [],
+      loading: true
+    }
+  },
+  methods: {
+    fetchAllMagazines: function() {
+      axios.get("https://gynaecol.mislavcrnkovic.com/articles") //change URI when deploying app.
+        .then((result) => {
+
+          var list = []
+          for (let i = 0; i < result.data.length; i++) {
+            let buff = Buffer.from(result.data[i].pdf)
+            let blob = new Blob([buff], {type: "application/pdf"})
+            let href = URL.createObjectURL(blob)
+            list.push(href)
+          }
+          console.log("blob list",list);
+          let final = result.data.map((item, index) => {
+            return ({id: item.id, title: item.title, volume: item.volume, page: item.page, date: item.date, author: item.author, language: item.language, type: item.type, blob: list[index]})
+          })
+          console.log("final",final);
+          this.items = final
+          this.loading = false
+        })
+        .catch(err => console.log(err))
+    },
+    handleClick: function(row) {
+      console.log("row", row.blob);
+      const a = document.createElement('a')
+      a.href = row.blob
+      a.download = row.blob.split('/').pop()
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+    },
+  },
+  mounted() {
+    this.fetchAllMagazines()
+  }
+}
+</script>
+
+
+<style scoped>
+.custom-title{
+  margin: 2rem 0;
+  line-height: 35px;
+  color: #702632;
+  text-align: center;
+}
+.keyword-lighten {
+  color: #000;
+  background-color: #FFFF00;
+}
+</style>
