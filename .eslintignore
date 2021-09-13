@@ -1,0 +1,4 @@
+pages/*.vue
+server/*.js
+server/Config/*.js
+server/controllers/*.js

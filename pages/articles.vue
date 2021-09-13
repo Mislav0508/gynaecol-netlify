@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     fetchAllMagazines: function() {
-      axios.get("https://gynaecol.mislavcrnkovic.com/articles") //change URI when deploying app.
+      axios.get("http://localhost:5000/articles") //change URI when deploying app.
         .then((result) => {
 
           var list = []

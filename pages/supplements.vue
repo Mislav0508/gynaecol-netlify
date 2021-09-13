@@ -40,7 +40,7 @@ export default {
         { text: 'Date', value: 'date' },
         { text: 'Author', value: 'author' },
         { text: 'Language', value: 'language' },
-        { text: 'Pdf', value: 'blob' }
+        { text: 'Pdf', value: 'doc' }
       ],
       items: [],
       loading: true
@@ -48,20 +48,10 @@ export default {
   },
   methods: {
     fetchAllSupplements: function() {
-      axios.get("http://localhost:3306/supplements") //change URI when deploying app.
+      axios.get("http://localhost:5000/supplements") //change URI when deploying app.
         .then((result) => {
-
-          var list = []
-          for (let i = 0; i < result.data.length; i++) {
-            let buff = Buffer.from(result.data[i].pdf)
-            let blob = new Blob([buff], {type: "application/pdf"})
-            let href = URL.createObjectURL(blob)
-            list.push(href)
-          }
-          console.log("list",list);
-
           let final = result.data.map((item, index) => {
-            return ({id: item.id, title: item.title, volume: item.volume, page: item.page, date: item.date, author: item.author, language: item.language, type: item.type, blob: list[index]})
+            return ({id: item.id, title: item.title, volume: item.volume, page: item.page, date: item.date, author: item.author, language: item.language, type: item.type, doc: item.pdf})
           })
           console.log("final",final);
           this.items = final
@@ -70,13 +60,8 @@ export default {
         .catch(err => console.log(err))
     },
     handleClick: function(row) {
-      console.log("row", row.blob);
-      const a = document.createElement('a')
-      a.href = row.blob
-      a.download = row.blob.split('/').pop()
-      document.body.appendChild(a)
-      a.click()
-      document.body.removeChild(a)
+      
+      window.open('https://api.mislavcrnkovic.com/pdf/' + row.doc + ".pdf", '_blank');
     }
   },
   mounted() {

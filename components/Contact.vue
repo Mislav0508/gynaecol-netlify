@@ -28,10 +28,11 @@ export default {
     }
   }),
   methods: {
+    /* eslint-disable */
     sendMessage: function() {
       console.log(this.message);
       if(this.message.name && this.message.lastName && this.message.subject && this.message.email && this.message.comment) {
-        axios.post("http://localhost:3000/", this.message) //change URI when deploying app.
+        axios.post("http://localhost:5000/", this.message) //change URI when deploying app.
         .then((result) => {
           let message = JSON.parse(result.config.data)
           alert(`Thank you ${message.name} for contacting us! We will respond as soon as possible. Have a great day!`)

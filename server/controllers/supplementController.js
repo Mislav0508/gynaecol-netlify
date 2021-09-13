@@ -1,9 +1,9 @@
 const db = require("../Config/db")
 
 const fetchAllSupplements = ((req,res) => {
-  db.query('SELECT * FROM gynaecol.supplement;', function (err, result) {
+  db.query('SELECT * FROM supplement;', function (err, result) {
     if (err) throw err
-    let supplements = result
+    const supplements = result
     console.log('Results: ', result)
     res.json(supplements)
   })
