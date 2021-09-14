@@ -28,6 +28,16 @@
 <script>
 import axios from "axios"
 export default {
+  head: {
+  title: `Gynaecologia et perinatologia | Articles`,
+  meta: [
+    {
+      hid: 'Gynaecologia et perinatologia | Articles',
+      name: 'Gynaecologia et perinatologia | Articles',
+      content: 'Gynaecologia et perinatologia | Articles'
+    }
+  ],
+  },
   data () {
     return {
       search: '',

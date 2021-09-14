@@ -29,6 +29,16 @@
 /* eslint-disable */
 import axios from "axios"
 export default {
+  head: {
+  title: `Gynaecologia et perinatologia | Supplements`,
+  meta: [
+    {
+      hid: 'Gynaecologia et perinatologia | Supplements',
+      name: 'Gynaecologia et perinatologia | Supplements',
+      content: 'Gynaecologia et perinatologia | Supplements'
+    }
+    ],
+  },
   data () {
     return {
       search: '',
