@@ -1,17 +1,25 @@
 <template>
   <div class="lang-dropdown">
-    <select v-model="$i18n.locale">
-      <option
-        v-for="lang in $i18n.locales"
-        :key="lang.code"
-        :value="lang.code"
-        >{{ lang.name }}</option
-      >
-    </select>
+      <v-select 
+      v-model="$i18n.locale" 
+      item-value="code"
+      item-text="name"
+      :items="items"
+      solo
+      light
+      height="10px"
+      ></v-select>
   </div>
 </template>
 <script>
-export default {}
+export default {
+  /* eslint-disable */
+  data(){
+    return {
+      items: this.$i18n.locales
+    }
+  }
+}
 </script>
 <style scoped>
 select{

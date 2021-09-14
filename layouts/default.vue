@@ -35,9 +35,12 @@
         <img src="~assets/icons/united-kingdom.svg" alt="english">
       </v-btn> -->
 
-      <v-btn small class="mt-1 red grey lighten-5">
+    <v-col 
+    class="d-flex justify-end"
+    cols="1"
+    sm="1">
         <LanguageInput />
-      </v-btn>
+    </v-col>
       
     </v-app-bar>
 
