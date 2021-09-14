@@ -60,7 +60,7 @@ export default {
         .catch(err => console.log(err))
     },
     handleClick: function(row) {
-      
+      console.log("row supplements", row)
       window.open('https://api.mislavcrnkovic.com/pdf/' + row.doc + ".pdf", '_blank');
     }
   },

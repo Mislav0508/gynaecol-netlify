@@ -68,7 +68,16 @@
 <script>
 
 export default {
-  
+  head: {
+    title: 'Gynaecologia et perinatologia | Home',
+    meta: [
+      {
+        hid: 'Gynaecologia et perinatologia | Home',
+        name: 'Gynaecologia et perinatologia | Home',
+        content: 'Gynaecologia et perinatologia | Home'
+      }
+    ],
+  }
 }
 </script>
 

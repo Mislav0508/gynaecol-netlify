@@ -3,15 +3,15 @@ import i18n from './config/i18n'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - app',
-    title: 'app',
+    // titleTemplate: '%s - app',
+    title: 'Gynaecologia et perinatologia',
     htmlAttrs: {
       lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'Časopis za ginekologiju, perinatologiju, reproduktivnu medicinu i ultrazvučnu dijagnostiku.', name: 'Časopis za ginekologiju, perinatologiju, reproduktivnu medicinu i ultrazvučnu dijagnostiku.', content: 'Časopis za ginekologiju, perinatologiju, reproduktivnu medicinu i ultrazvučnu dijagnostiku.' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -40,11 +40,13 @@ export default {
          locales: [
           {
              code: 'en',
-             name: 'Eng'
+             name: 'Eng',
+             iso: 'en-US'
           },
           {
              code: 'hr',
-             name: 'Hrv'
+             name: 'Hrv',
+             iso: 'hr-HR'
           }
         ],
         vueI18n: i18n
@@ -87,7 +89,9 @@ export default {
   ],
 
   i18n: {
-    i18n: {
+    strategy: 'prefix_except_default',
+    seo: true,
+    i18n: {      
       locales: ['hr', 'en'],
       defaultLocale: 'hr',
       vueI18n: {

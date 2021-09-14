@@ -54,28 +54,28 @@
           v-model="group"
           active-class="deep-purple--text text--accent-4"
         >
-        <NuxtLink to="/" class="link">
+        <NuxtLink :to="localePath('/')" class="link">
           <v-list-item > 
             <font-awesome-icon class="onama-icon" :icon="['fas', 'home']"/>              
             {{ $t('navbar_home') }}      
           </v-list-item>        
         </NuxtLink>
 
-        <NuxtLink to="/articles" class="link">
+        <NuxtLink :to="localePath('articles')" class="link">
           <v-list-item>
             <font-awesome-icon class="onama-icon" :icon="['fas', 'newspaper']"/>    
             {{ $t('navbar_articles') }}
           </v-list-item>            
         </NuxtLink>
 
-        <NuxtLink to="/supplements" class="link">
+        <NuxtLink :to="localePath('supplements')" class="link">
           <v-list-item>  
             <font-awesome-icon class="onama-icon" :icon="['fas', 'folder-plus']"/>         
             {{ $t('navbar_supplements') }}
           </v-list-item>            
         </NuxtLink>
 
-        <NuxtLink to="/about" class="link">
+        <NuxtLink :to="localePath('about')" class="link">
           <v-list-item>
             <font-awesome-icon class="onama-icon" :icon="['fas', 'info-circle']"/> 
             {{ $t('navbar_about') }}
@@ -110,28 +110,28 @@
         color="#702632"
       >
         <v-card-text>
-          <NuxtLink to="/" class="link">
+          <NuxtLink :to="localePath('/')" class="link">
             <v-btn
             class="mx-4"
             icon>
               <font-awesome-icon class="white--text onama-icon" :icon="['fas', 'home']"/> 
             </v-btn>
           </NuxtLink>
-          <NuxtLink to="/articles" class="link">
+          <NuxtLink :to="localePath('articles')" class="link">
             <v-btn
             class="mx-4"
             icon>
               <font-awesome-icon class="white--text onama-icon" :icon="['fas', 'newspaper']"/> 
             </v-btn>
           </NuxtLink>
-          <NuxtLink to="/supplements" class="link">
+          <NuxtLink :to="localePath('supplements')" class="link">
             <v-btn
             class="mx-4"
             icon>
               <font-awesome-icon class="white--text onama-icon" :icon="['fas', 'folder-plus']"/> 
             </v-btn>
           </NuxtLink>
-          <NuxtLink to="/about" class="link">
+          <NuxtLink :to="localePath('about')" class="link">
             <v-btn
             class="mx-4"
             icon>

@@ -50,15 +50,6 @@ export default {
     fetchAllMagazines: function() {
       axios.get("http://localhost:5000/articles") //change URI when deploying app.
         .then((result) => {
-
-          var list = []
-          for (let i = 0; i < result.data.length; i++) {
-            let buff = Buffer.from(result.data[i].pdf)
-            let blob = new Blob([buff], {type: "application/pdf"})
-            let href = URL.createObjectURL(blob)
-            list.push(href)
-          }
-          console.log("blob list",list);
           let final = result.data.map((item, index) => {
             return ({id: item.id, title: item.title, volume: item.volume, page: item.page, date: item.date, author: item.author, language: item.language, type: item.type, blob: list[index]})
           })
@@ -69,13 +60,8 @@ export default {
         .catch(err => console.log(err))
     },
     handleClick: function(row) {
-      console.log("row", row.blob);
-      const a = document.createElement('a')
-      a.href = row.blob
-      a.download = row.blob.split('/').pop()
-      document.body.appendChild(a)
-      a.click()
-      document.body.removeChild(a)
+      console.log("row articles", row);
+      window.open('https://api.mislavcrnkovic.com/pdf/' + row.doc + ".pdf", '_blank');
     },
   },
   mounted() {

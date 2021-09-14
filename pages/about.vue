@@ -176,7 +176,16 @@
 <script>
 
 export default {
-  // middleware: 'test'
+  head: {
+    title: `Gynaecologia et perinatologia | About`,
+    meta: [
+      {
+        hid: 'Gynaecologia et perinatologia | About',
+        name: 'Gynaecologia et perinatologia | About',
+        content: 'Gynaecologia et perinatologia | About'
+      }
+    ],
+  }
 }
 </script>
 
