@@ -14,6 +14,8 @@
         ></v-text-field>
       </v-card-title>
       <v-data-table
+      height="60vh"
+      class="mb-5"
       :loading="loading"
       :headers="headers"
       :items="items"
@@ -50,28 +52,28 @@ export default {
         { text: 'Author', value: 'author' },
         { text: 'Language', value: 'language' },
         { text: 'Type', value: 'type' },
-        { text: 'Pdf', value: 'blob' },
+        { text: 'Pdf', value: 'pdf' },
       ],
       items: [],
       loading: true
     }
   },
   methods: {
-    fetchAllMagazines: function() {
-      axios.get("http://localhost:5000/articles") //change URI when deploying app.
-        .then((result) => {
-          let final = result.data.map((item, index) => {
-            return ({id: item.id, title: item.title, volume: item.volume, page: item.page, date: item.date, author: item.author, language: item.language, type: item.type, blob: list[index]})
-          })
-          console.log("final",final);
-          this.items = final
-          this.loading = false
-        })
-        .catch(err => console.log(err))
+    fetchAllMagazines: async function() {
+      // http://localhost:5000/articles
+      // https://gynaecol-db.herokuapp.com/articles
+      const response = await axios.get("https://gynaecol-db.herokuapp.com/articles")
+      const data = response.data
+      let final = data.map((item) => {
+        return ({id: item.id, title: item.title, volume: item.volume, page: item.page, date: item.date, author: item.author, language: item.language, type: item.type, pdf: item.pdf})
+      })
+      console.log(final);
+      this.items = final
+      this.loading = false
     },
     handleClick: function(row) {
       console.log("row articles", row);
-      window.open('https://api.mislavcrnkovic.com/pdf/' + row.doc + ".pdf", '_blank');
+      window.open('https://api.gynaecolperinatol.hr/pdf/' + row.pdf + ".pdf", '_blank');
     },
   },
   mounted() {

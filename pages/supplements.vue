@@ -14,10 +14,12 @@
         ></v-text-field>
       </v-card-title>
       <v-data-table
+      class="mb-5"
       :loading="loading"
       :headers="headers"
       :items="items"
       :search="search"
+      height="50vh"
       @click:row="handleClick"
       ></v-data-table>
     </v-card>
@@ -57,21 +59,21 @@ export default {
     }
   },
   methods: {
-    fetchAllSupplements: function() {
-      axios.get("http://localhost:5000/supplements") //change URI when deploying app.
-        .then((result) => {
-          let final = result.data.map((item, index) => {
-            return ({id: item.id, title: item.title, volume: item.volume, page: item.page, date: item.date, author: item.author, language: item.language, type: item.type, doc: item.pdf})
-          })
-          console.log("final",final);
-          this.items = final
-          this.loading = false
-        })
-        .catch(err => console.log(err))
+    fetchAllSupplements: async function() {
+      // http://localhost:5000/supplements
+      // https://gynaecol-db.herokuapp.com/supplements
+      const response = await axios.get("https://gynaecol-db.herokuapp.com/supplements")
+      const data = response.data
+      let final = data.map((item, index) => {
+        return ({id: item.id, title: item.title, volume: item.volume, page: item.page, date: item.date, author: item.author, language: item.language, type: item.type, doc: item.pdf})
+      })
+      console.log(final);
+      this.items = final
+      this.loading = false
     },
     handleClick: function(row) {
       console.log("row supplements", row)
-      window.open('https://api.mislavcrnkovic.com/pdf/' + row.doc + ".pdf", '_blank');
+      window.open('https://api.gynaecolperinatol.hr/pdf/' + row.doc + ".pdf", '_blank');
     }
   },
   mounted() {
