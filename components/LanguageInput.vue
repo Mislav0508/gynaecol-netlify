@@ -7,7 +7,7 @@
       :items="items"
       solo
       light
-      height="10px"
+      dense
       ></v-select>
   </div>
 </template>

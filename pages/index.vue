@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card>
+    <!-- <v-card> -->
       <v-row class="d-flex justify-center my-lg-10 my-xl-10 custom-title">
         <h1 class="my-10">GYNAECOLOGIA ET PERINATOLOGIA</h1>
       </v-row>
@@ -54,14 +54,14 @@
             <p>{{ $t('home_paragraph') }}</p>
         </v-col>
       </v-row>
-      <v-col cols="12" class="d-flex justify-center my-5">
+      <v-col cols="12" class="d-flex justify-center my-xl-5 my-lg-5 my-md-5">
         <v-card
         elevation="2"
-            class="mb-5">
+        class="mb-5">
           <Contact />
         </v-card>
       </v-col>
-    </v-card>
+    <!-- </v-card> -->
   </v-container>
 </template>
 
@@ -113,6 +113,12 @@ export default {
   border-radius: 15px;
   border: 2px solid #702632;
   box-shadow: 0.5rem 0.5rem 0.5rem grey;
+}
+@media only screen and (max-width: 600px) {
+  .custom-title {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+  }
 }
 
 </style>

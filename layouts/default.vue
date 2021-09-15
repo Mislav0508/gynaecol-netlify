@@ -12,7 +12,7 @@
     <v-app-bar
       color="#702632"
       dark
-      prominent
+      prominent      
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
@@ -26,19 +26,11 @@
       
       <v-spacer></v-spacer>
 
-
-      <!-- <v-btn icon small class="mr-3">
-        <img src="~assets/icons/croatia.svg" alt="hrvatski">
-      </v-btn>
-
-      <v-btn icon small class="mr-4">
-        <img src="~assets/icons/united-kingdom.svg" alt="english">
-      </v-btn> -->
-
     <v-col 
+    v-if="$vuetify.breakpoint.smAndUp"
     class="d-flex justify-end"
     cols="1"
-    sm="1">
+    >
         <LanguageInput />
     </v-col>
       
@@ -84,6 +76,8 @@
             {{ $t('navbar_about') }}
           </v-list-item>            
         </NuxtLink>
+
+        <LanguageInput v-if="$vuetify.breakpoint.xsOnly" class="mt-5"/>
 
         </v-list-item-group>
       </v-list>

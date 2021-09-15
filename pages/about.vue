@@ -1,6 +1,6 @@
 <template>
   <v-container class="text-center">
-    <v-card>
+    <!-- <v-card> -->
       <v-row class="d-flex align-center justify-center my-lg-10 my-xl-10">
         <h1 class="custom-title mt-15">{{ $t('About') }}</h1>
       </v-row>
@@ -169,7 +169,7 @@
       <p class="text-justify ma-5">
       {{ $t('about_footer') }}
       </p>
-    </v-card>
+    <!-- </v-card> -->
   </v-container>
 </template>
 

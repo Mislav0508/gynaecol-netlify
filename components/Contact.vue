@@ -10,7 +10,7 @@
       <input v-model="message.subject" type="text" placeholder="Predmet" class="grid-predmet" />
       <input v-model="message.email" type="email" placeholder="Email" class="grid-email"/>
       <textarea v-model="message.comment" type="text" placeholder="Komentar" class="grid-komentar"/>
-      <button @click="sendMessage" type="submit" class="grid-submit-btn">{{ $t('Send') }}</button>
+      <button type="submit" class="grid-submit-btn" @click="sendMessage">{{ $t('Send') }}</button>
     </div>
   </div>
 </template>
@@ -120,7 +120,7 @@ input,textarea{
   background: #FFFFFA;
   border: 1.5px solid #702632;
 }
-@media screen and (max-width: 560px){
+@media screen and (max-width: 600px){
   .contact-grid{
     grid-template-columns: 1fr;
     grid-template-rows: 35px 35px 35px 35px 5rem;
@@ -134,6 +134,9 @@ input,textarea{
   }
   .contact-container{
     min-width: 100%;
+    padding: 2rem;
+    margin: 2rem 0;
+    min-width: 90vw;
   }
 }
 </style>
