@@ -2,12 +2,12 @@
   <v-container class="text-center">
     <!-- <v-card> -->
       <v-row class="d-flex align-center justify-center my-lg-10 my-xl-10">
-        <h1 class="custom-title mt-15">{{ $t('About') }}</h1>
+        <h3 class="custom-title mt-15">{{ $t('About') }}</h3>
       </v-row>
       <v-row class="d-flex flex-column">
         <!-- LEFT COLUMN -->
         <v-col>
-          <v-row class="d-flex justify-center text-center">
+          <v-row class="d-flex justify-center text-center mb-3">
           <h4 class="custom-subtitle mb-5"><b>{{ $t('about_subtitle_1') }}</b></h4>
           </v-row>
           <v-row >
@@ -166,7 +166,7 @@
           <p>{{ $t('about_box_5') }}: 1100 primjeraka</p>
         </v-col>
       </v-row>
-      <p class="text-justify ma-5">
+      <p class="text-justify ma-5 mb-10">
       {{ $t('about_footer') }}
       </p>
     <!-- </v-card> -->
@@ -177,7 +177,7 @@
 
 export default {
   head: {
-    title: `Gynaecologia et perinatologia | About`,
+    title: `About page`,
     meta: [
       {
         hid: 'Gynaecologia et perinatologia | About',
@@ -199,9 +199,10 @@ export default {
 }
 .custom-subtitle{
   margin: 1rem 0;
+  font-size: 1.4rem; 
   line-height: 35px;
   color: #702632;
-  text-align: center;  
+  text-align: center; 
 }
 .onama-icon{
   transform: scale(1.5);
@@ -227,5 +228,15 @@ td{
   padding: .75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
+}
+@media only screen and (max-width: 600px) {
+  .custom-title{
+    font-size: 2rem;
+    margin: 2rem 0;
+  }
+  .custom-subtitle{
+    font-size: 1.1rem;
+    margin: 1rem 0;
+  }
 }
 </style>

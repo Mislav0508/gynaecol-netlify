@@ -11,6 +11,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'description', content: 'Časopis za ginekologiju, perinatologiju, reproduktivnu medicinu i ultrazvučnu dijagnostiku.', name: 'Časopis za ginekologiju, perinatologiju, reproduktivnu medicinu i ultrazvučnu dijagnostiku.' },
       { hid: 'Časopis za ginekologiju, perinatologiju, reproduktivnu medicinu i ultrazvučnu dijagnostiku.', name: 'Časopis za ginekologiju, perinatologiju, reproduktivnu medicinu i ultrazvučnu dijagnostiku.', content: 'Časopis za ginekologiju, perinatologiju, reproduktivnu medicinu i ultrazvučnu dijagnostiku.' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
@@ -33,7 +34,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     [
-      'nuxt-i18n',
+      'nuxt-i18n',      
       {
         vueI18nLoader: true,
         defaultLocale: 'hr',
@@ -71,15 +72,15 @@ export default {
     'nuxt-i18n',
     ['nuxt-mail', {
       message: {
-        to: 'mislav0508@hotmail.com',
+        to: 'josip.djelmis@gynaecolperinatol.hr',
       },
       smtp: {
-        host: "smtp-mail.outlook.com",
-        port: 587,
-        secure: false, // true for 465, false for other ports
+        host: "mail.gynaecolperinatol.hr",
+        port: 465,
+        secure: true, // true for 465, false for other ports
         auth: {
-          user: "mislav0508@hotmail.com", 
-          pass: process.env.EMAIL_PASS, 
+          user: "josip.djelmis@gynaecolperinatol.hr", 
+          pass: "Djelmis10203040", 
         },
         tls: {
           rejectUnauthorized:false
@@ -92,7 +93,18 @@ export default {
     strategy: 'prefix_except_default',
     seo: true,
     i18n: {      
-      locales: ['hr', 'en'],
+      locales: [
+        {
+          code: 'en',
+          name: 'Eng',
+          iso: 'en-US'
+       },
+       {
+          code: 'hr',
+          name: 'Hrv',
+          iso: 'hr-HR'
+       }
+      ],
       defaultLocale: 'hr',
       vueI18n: {
         fallbackLocale: 'hr',

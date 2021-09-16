@@ -32,7 +32,7 @@
 import axios from "axios"
 export default {
   head: {
-  title: `Gynaecologia et perinatologia | Supplements`,
+  title: `Supplements page`,
   meta: [
     {
       hid: 'Gynaecologia et perinatologia | Supplements',

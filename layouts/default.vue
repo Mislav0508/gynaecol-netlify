@@ -87,13 +87,13 @@
       The navigation drawer will appear from the bottom on smaller size screens.
     </v-card-text> -->
   </v-card>
+   <!-- NAVBAR END -->
 
   <!-- CONTENT -->
-
   <Nuxt />
+   <!-- CONTENT END -->
 
   <!-- FOOTER -->
-
   <v-card height="8vh" class="mt-15">
     <v-footer
     color="#702632"
