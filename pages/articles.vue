@@ -44,7 +44,7 @@ export default {
     return {
       search: '',
       headers: [
-        { text: 'Id', value: 'id'},
+        // { text: 'Id', value: 'id'},
         { text: 'Title', value: 'title' },
         { text: 'Volume', value: 'volume' },
         { text: 'Page', value: 'page' },
@@ -52,7 +52,7 @@ export default {
         { text: 'Author', value: 'author' },
         { text: 'Language', value: 'language' },
         { text: 'Type', value: 'type' },
-        { text: 'Pdf', value: 'pdf' },
+        // { text: 'Pdf', value: 'pdf' },
       ],
       items: [],
       loading: true
@@ -62,7 +62,12 @@ export default {
     fetchAllMagazines: async function() {
       // http://localhost:5000/articles
       // https://gynaecol-db.herokuapp.com/articles
-      const response = await axios.get("https://gynaecol-db.herokuapp.com/articles")
+      const response = await axios.get("https://gynaecol-db.herokuapp.com/articles", {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      })
       const data = response.data
       let final = data.map((item) => {
         return ({id: item.id, title: item.title, volume: item.volume, page: item.page, date: item.date, author: item.author, language: item.language, type: item.type, pdf: item.pdf})

@@ -4,29 +4,30 @@
       <h2 class="contact-title">{{ $t('Contact') }}</h2>
       <div class="underline"></div>
     </div>
-    <div class="contact-grid">
+    <form class="contact-grid">
       <label class="grid-name">
-        <input id="grid-name" v-model="message.name" type="text" placeholder="Ime"/>
+        <input id="grid-name" v-model="message.name" type="text" :placeholder="$t('Name')"/>
       </label>
       <label class="grid-prezime">
-        <input id="grid-prezime" v-model="message.lastName" type="text" placeholder="Prezime"/>        
+        <input id="grid-prezime" v-model="message.lastName" type="text" :placeholder="$t('LastName')"/>        
       </label>
       <label class="grid-predmet">
-        <input id="grid-predmet" v-model="message.subject" type="text" placeholder="Predmet" />
+        <input id="grid-predmet" v-model="message.subject" type="text" :placeholder="$t('Subject')" />
       </label>
       <label class="grid-email">
         <input id="grid-email" v-model="message.email" type="email" placeholder="Email" />
       </label>
       <label class="grid-komentar">
-        <textarea id="grid-komentar" v-model="message.comment" type="text" placeholder="Komentar"/>
+        <textarea id="grid-komentar" v-model="message.comment" type="text" :placeholder="$t('Comment')"/>
       </label>
       <button type="submit" class="grid-submit-btn" @click="sendMessage">{{ $t('Send') }}</button>
-    </div>
+    </form>
   </div>
 </template>
 
 <script>
 import axios from "axios"
+
 export default {
   data: () => ({
     message: {
@@ -41,28 +42,25 @@ export default {
     /* eslint-disable */
     // http://localhost:5000/ 
     // https://gynaecolperinatol.hr
+    // https://gynaecol-db.herokuapp.com/
     sendMessage: function() {
       console.log(this.message);
       if(this.message.name && this.message.lastName && this.message.subject && this.message.email && this.message.comment) {
-        axios.post("https://gynaecolperinatol.hr", this.message, { //change URI when deploying app.
+        axios.post("http://localhost:5000/", this.message, { //change URI when deploying app to the server URI. 
           headers: {
-          'Content-Type': 'application/json'
+          "Access-Control-Allow-Origin": "*"
           }
         }) 
         .then((result) => {
-          let message = JSON.parse(result.config.data)
+          console.log("result",result);
+          let message = JSON.parse(result.config.data)          
+          console.log(message);
           alert(`Thank you ${message.name} for contacting us! We will respond as soon as possible. Have a great day!`)
-          this.$mail.send({
-            from: `josip.djelmis@gynaecolperinatol.hr`, // ovo mora bit moj mail
-            subject: `${message.subject}`,
-            text: `${message.comment}`,
-          })
         })
         .catch(err => console.log(err))
         this.message = {}
       } else {
-        console.log("please fill out all fields!")
-        alert("please fill out all fields!")
+        alert("Please fill out all fields!")
       }
     }
   }

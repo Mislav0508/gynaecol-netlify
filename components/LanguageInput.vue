@@ -8,15 +8,22 @@
       solo
       light
       dense
+      @input="switchLocale"
       ></v-select>
   </div>
 </template>
 <script>
+/* eslint-disable */
 export default {
-  /* eslint-disable */
   data(){
     return {
       items: this.$i18n.locales
+    }
+  },
+  methods: {
+    switchLocale: function (e) {
+      console.log(e);
+      console.log(this.$vuetify.lang.current);
     }
   }
 }

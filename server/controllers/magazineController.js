@@ -1,9 +1,9 @@
 const db = require("../Config/db")
 
-const fetchAllMagazines = ((req,res) => {
-  db.query('SELECT * FROM magazine;', function (err, result) {
+const fetchAllMagazines = ( (req,res) => {
+  db.query('SELECT * FROM magazine;', async function (err, result) {
     if (err) throw err
-    res.json(result)
+    await res.json(result)
   })
 })
 
