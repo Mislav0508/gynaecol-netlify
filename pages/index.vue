@@ -69,7 +69,7 @@
 
 export default {
   head: {
-    title: 'Home page',
+    title: 'Gynaecologia et perinatologia',
     meta: [
       {
         hid: 'Gynaecologia et perinatologia | Home',

@@ -53,24 +53,23 @@ export default {
     /* eslint-disable */
     // https://gynaecolperinatol.hr
     // https://gynaecol-db.herokuapp.com/
-    sendMessage: function(event) {
-      const { name, lastName, subject, email, comment } = Object.fromEntries(new FormData(event.target))
-      let message = { name, lastName, subject, email, comment }
-      console.log(message);
-      function encode(data) {
+    encode: function(data) {
         return Object.keys(data)
             .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
             .join("&")
-      }
-      console.log(encode);
+    },
+    sendMessage: function(event) {
+      console.log(window.location.origin);
+      const { name, lastName, subject, email, comment } = Object.fromEntries(new FormData(event.target))
+      let message = { name, lastName, subject, email, comment }
+      console.log(message);
       event.preventDefault()
-      fetch("/", {
+      fetch(
+        window.location.origin, 
+        {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({
-          "form-name": event.target.getAttribute("contactForm"),
-          ...message
-        })
+        body: this.encode({...message})
       }).then(() => console.log("Form was submittet")).catch(error => alert(error))
     }
   }
