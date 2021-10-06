@@ -4,64 +4,74 @@
       <h2 class="contact-title">{{ $t('Contact') }}</h2>
       <div class="underline"></div>
     </div>
-    <form class="contact-grid">
+
+    <form class="contact-grid" 
+    name="contactForm"
+    method="POST" 
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+    @submit.prevent="sendMessage"
+    >
+
+      <input type="hidden" name="form-name" value="contactForm">
+
       <label class="grid-name">
-        <input id="grid-name" v-model="message.name" type="text" :placeholder="$t('Name')"/>
+        <input id="grid-name" type="text" name="name" :placeholder="$t('Name')"/>
       </label>
+
       <label class="grid-prezime">
-        <input id="grid-prezime" v-model="message.lastName" type="text" :placeholder="$t('LastName')"/>        
+        <input id="grid-prezime" type="text" name="lastName" :placeholder="$t('LastName')"/>        
       </label>
+
       <label class="grid-predmet">
-        <input id="grid-predmet" v-model="message.subject" type="text" :placeholder="$t('Subject')" />
+        <input id="grid-predmet" type="text" name="subject" :placeholder="$t('Subject')" />
       </label>
+
       <label class="grid-email">
-        <input id="grid-email" v-model="message.email" type="email" placeholder="Email" />
+        <input id="grid-email" type="text" name="email" placeholder="Email" />
       </label>
+
       <label class="grid-komentar">
-        <textarea id="grid-komentar" v-model="message.comment" type="text" :placeholder="$t('Comment')"/>
+        <textarea id="grid-komentar" type="text" name="comment" :placeholder="$t('Comment')"/>
       </label>
-      <button type="submit" class="grid-submit-btn" @click="sendMessage">{{ $t('Send') }}</button>
+
+      <button type="submit" class="grid-submit-btn">{{ $t('Send') }}</button>
+
     </form>
+
   </div>
 </template>
 
 <script>
-import axios from "axios"
+// import axios from "axios"
 
 export default {
   data: () => ({
-    message: {
-      name: "",
-      lastName: "",
-      subject: "",
-      email: "",
-      comment: ""
-    }
+    
   }),
   methods: {
     /* eslint-disable */
-    // http://localhost:5000/ 
     // https://gynaecolperinatol.hr
     // https://gynaecol-db.herokuapp.com/
-    sendMessage: function() {
-      console.log(this.message);
-      if(this.message.name && this.message.lastName && this.message.subject && this.message.email && this.message.comment) {
-        axios.post("https://gynaecol-db.herokuapp.com/", this.message, { //change URI when deploying app to the server URI. 
-          headers: {
-          "Access-Control-Allow-Origin": "*"
-          }
-        }) 
-        .then((result) => {
-          console.log("result",result);
-          let message = JSON.parse(result.config.data)          
-          console.log(message);
-          alert(`Thank you ${message.name} for contacting us! We will respond as soon as possible. Have a great day!`)
-        })
-        .catch(err => console.log(err))
-        this.message = {}
-      } else {
-        alert("Please fill out all fields!")
+    sendMessage: function(event) {
+      const { name, lastName, subject, email, comment } = Object.fromEntries(new FormData(event.target))
+      let message = { name, lastName, subject, email, comment }
+      console.log(message);
+      function encode(data) {
+        return Object.keys(data)
+            .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+            .join("&")
       }
+      console.log(encode);
+      event.preventDefault()
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": event.target.getAttribute("contactForm"),
+          ...message
+        })
+      }).then(() => console.log("Form was submittet")).catch(error => alert(error))
     }
   }
 }
