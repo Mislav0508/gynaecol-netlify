@@ -46,7 +46,7 @@ export default {
     sendMessage: function() {
       console.log(this.message);
       if(this.message.name && this.message.lastName && this.message.subject && this.message.email && this.message.comment) {
-        axios.post("http://localhost:5000/", this.message, { //change URI when deploying app to the server URI. 
+        axios.post("https://gynaecol-db.herokuapp.com/", this.message, { //change URI when deploying app to the server URI. 
           headers: {
           "Access-Control-Allow-Origin": "*"
           }

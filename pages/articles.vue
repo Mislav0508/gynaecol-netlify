@@ -80,9 +80,19 @@ export default {
       console.log("row articles", row);
       window.open('https://api.gynaecolperinatol.hr/pdf/' + row.pdf + ".pdf", '_blank');
     },
+    reloadItems: function() {
+      setTimeout(() => {
+        if(this.items.length > 0) {
+          return
+        } else {
+          location.reload()
+        }
+      }, 5000)
+    }
   },
   mounted() {
     this.fetchAllMagazines()
+    this.reloadItems()
   }
 }
 </script>

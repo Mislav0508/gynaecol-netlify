@@ -79,10 +79,20 @@ export default {
     handleClick: function(row) {
       console.log("row supplements", row)
       window.open('https://api.gynaecolperinatol.hr/pdf/' + row.doc + ".pdf", '_blank');
+    },
+    reloadItems: function() {
+      setTimeout(() => {
+        if(this.items.length > 0) {
+          return
+        } else {
+          location.reload()
+        }
+      }, 5000)
     }
   },
   mounted() {
     this.fetchAllSupplements()
+    this.reloadItems()
   }
 }
 </script>
