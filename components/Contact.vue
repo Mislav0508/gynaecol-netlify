@@ -5,7 +5,9 @@
       <div class="underline"></div>
     </div>
 
-    <form class="contact-grid" 
+    <form  
+    id="contactForm"
+    class="contact-grid"
     name="contactForm"
     method="POST" 
     data-netlify="true"
@@ -16,26 +18,32 @@
       <input type="hidden" name="form-name" value="contactForm">
 
       <label class="grid-name">
-        <input id="grid-name" type="text" name="name" :placeholder="$t('Name')"/>
+        <input id="grid-name" type="text" name="name" :placeholder="$t('Name')" required/>
       </label>
 
       <label class="grid-prezime">
-        <input id="grid-prezime" type="text" name="lastName" :placeholder="$t('LastName')"/>        
+        <input id="grid-prezime" type="text" name="lastName" :placeholder="$t('LastName')" required/>        
       </label>
 
       <label class="grid-predmet">
-        <input id="grid-predmet" type="text" name="subject" :placeholder="$t('Subject')" />
+        <input id="grid-predmet" type="text" name="subject" :placeholder="$t('Subject')" required/>
       </label>
 
       <label class="grid-email">
-        <input id="grid-email" type="text" name="email" placeholder="Email" />
+        <input id="grid-email" type="email" name="email" placeholder="Email" required/>
       </label>
 
       <label class="grid-komentar">
-        <textarea id="grid-komentar" type="text" name="comment" :placeholder="$t('Comment')"/>
+        <textarea id="grid-komentar" type="text" name="comment" :placeholder="$t('Comment')" required/>
       </label>
 
       <button type="submit" class="grid-submit-btn">{{ $t('Send') }}</button>
+
+      <v-alert
+      v-if="successAlert"
+      class="grid-alert"
+      type="success"
+      >{{ $t('Form_Success_Alert') }}</v-alert>
 
     </form>
 
@@ -47,7 +55,7 @@
 
 export default {
   data: () => ({
-    
+    successAlert: false
   }),
   methods: {
     /* eslint-disable */
@@ -59,12 +67,9 @@ export default {
             .join("&")
     },
     sendMessage: function(event) {
+      this.successAlert = true
       const { name, lastName, subject, email, comment } = Object.fromEntries(new FormData(event.target))
       let message = { name, lastName, subject, email, comment }
-      console.log({...message});
-      let encoded = this.encode
-      console.log("encoded",encoded);
-      event.preventDefault()
       fetch(
         "/", 
         {
@@ -74,7 +79,13 @@ export default {
           "form-name": "contactForm",
           ...message
           })
-      }).then(() => console.log("Form was submittet")).catch(error => alert(error))
+      }).then(() => {
+        console.log("form was submittet");
+        document.getElementById("contactForm").reset();
+        setTimeout(() => {
+          this.successAlert = false
+        }, 3500)
+      }).catch(error => alert(error))
     }
   }
 }
@@ -111,7 +122,8 @@ export default {
   "n n e e"
   "s s p p"
   "m m m m"
-  "b b b b";
+  "b b b b"
+  "a a a a";
 }
 #grid-name,#grid-prezime,#grid-predmet,#grid-email,#grid-komentar{
   width: 100%;
@@ -143,6 +155,9 @@ export default {
   border-radius: 15px;
   transition: all 0.3s ease-in;
 }
+.grid-alert{
+  grid-area: a;
+}
 .grid-submit-btn:hover{
   opacity: 0.8;
 
@@ -161,7 +176,8 @@ input,textarea{
     "s"
     "p"
     "m"
-    "b";
+    "b"
+    "a";
   }
   .contact-container{
     min-width: 100%;
