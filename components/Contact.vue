@@ -59,17 +59,21 @@ export default {
             .join("&")
     },
     sendMessage: function(event) {
-      console.log(window.location.origin);
       const { name, lastName, subject, email, comment } = Object.fromEntries(new FormData(event.target))
       let message = { name, lastName, subject, email, comment }
-      console.log(message);
+      console.log({...message});
+      let encoded = this.encode
+      console.log("encoded",encoded);
       event.preventDefault()
       fetch(
-        window.location.origin, 
+        "/", 
         {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: this.encode({...message})
+        body: this.encode({
+          "form-name": "contactForm",
+          ...message
+          })
       }).then(() => console.log("Form was submittet")).catch(error => alert(error))
     }
   }
