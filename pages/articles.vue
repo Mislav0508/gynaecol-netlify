@@ -60,7 +60,7 @@ export default {
   methods: {
     fetchAllMagazines: async function() {
       // http://localhost:5000/articles
-      const response = await axios.get("/api/getMagazines", {
+      const response = await axios.get("/.netlify/functions/getMagazines", {
         headers: {
           "Access-Control-Allow-Origin": "*",
           'Content-Type': 'application/x-www-form-urlencoded'
