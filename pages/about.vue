@@ -177,12 +177,17 @@
 
 export default {
   head: {
-    title: `About page`,
+    title: `Gynaecologia et perinatologia | About`,
     meta: [
       {
-        hid: 'Gynaecologia et perinatologia | About',
-        name: 'Gynaecologia et perinatologia | About',
+        hid: 'About',
+        name: 'About',
         content: 'Gynaecologia et perinatologia | About'
+      },
+      {
+        hid: `keywords`,
+        name: 'keywords',
+        keywords: 'ginekologija, perinatologija, about'
       }
     ],
   }

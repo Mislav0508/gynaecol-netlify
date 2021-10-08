@@ -18,8 +18,8 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'description', content: 'Časopis za ginekologiju, perinatologiju, reproduktivnu medicinu i ultrazvučnu dijagnostiku.', name: 'Časopis za ginekologiju, perinatologiju, reproduktivnu medicinu i ultrazvučnu dijagnostiku.' },
-      { hid: 'Časopis za ginekologiju, perinatologiju, reproduktivnu medicinu i ultrazvučnu dijagnostiku.', name: 'Časopis za ginekologiju, perinatologiju, reproduktivnu medicinu i ultrazvučnu dijagnostiku.', content: 'Časopis za ginekologiju, perinatologiju, reproduktivnu medicinu i ultrazvučnu dijagnostiku.' },
+      { hid: 'description', name: 'description', content: 'Časopis za ginekologiju, perinatologiju, reproduktivnu medicinu i ultrazvučnu dijagnostiku.'},
+      { hid: 'keywords', name: 'keywords', content: 'Ginekologija, perinatologija, časopis' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
