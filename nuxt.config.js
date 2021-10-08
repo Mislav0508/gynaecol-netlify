@@ -4,6 +4,11 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   target: 'static',
   ssr: true,
+
+  env: {
+    baseURL: process.env.BASE_URL
+  },
+
   head: {
     // titleTemplate: '%s - app',
     title: 'Gynaecologia et perinatologia',
