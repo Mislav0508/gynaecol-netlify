@@ -45,7 +45,6 @@ export default {
     return {
       search: '',
       headers: [
-        // { text: 'Id', value: 'id'},
         { text: 'Title', value: 'title' },
         { text: 'Volume', value: 'volume' },
         { text: 'Page', value: 'page' },
@@ -61,8 +60,7 @@ export default {
   methods: {
     fetchAllSupplements: async function() {
       // http://localhost:5000/supplements
-      // https://gynaecol-db.herokuapp.com/supplements
-      const response = await axios.get("https://gynaecol-db.herokuapp.com/supplements", {
+      const response = await axios.get("/api/getMagazines", {
         headers: {
           "Access-Control-Allow-Origin": "*",
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -70,29 +68,19 @@ export default {
       })
       const data = response.data
       let final = data.map((item, index) => {
-        return ({id: item.id, title: item.title, volume: item.volume, page: item.page, date: item.date, author: item.author, language: item.language, type: item.type, doc: item.pdf})
+        return ({title: item.title, volume: item.volume, page: item.page, date: item.date, author: item.author, language: item.language, type: item.type, pdf: item.pdf})
       })
-      console.log(final);
-      this.items = final
+      this.items = final.filter((item) => item.type == "supplement")
+      console.log(this.items);
       this.loading = false
     },
     handleClick: function(row) {
       console.log("row supplements", row)
-      window.open('https://api.gynaecolperinatol.hr/pdf/' + row.doc + ".pdf", '_blank');
-    },
-    reloadItems: function() {
-      setTimeout(() => {
-        if(this.items.length > 0) {
-          return
-        } else {
-          location.reload()
-        }
-      }, 5000)
+      window.open('https://api.gynaecolperinatol.hr/pdf/' + row.pdf + ".pdf", '_blank');
     }
   },
   mounted() {
     this.fetchAllSupplements()
-    this.reloadItems()
   }
 }
 </script>

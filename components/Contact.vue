@@ -18,7 +18,8 @@
       <input type="hidden" name="form-name" value="contactForm">
 
       <label class="grid-name">
-        <input id="grid-name" type="text" name="name" :placeholder="$t('Name')" required/>
+        <input id="grid-name" type="text" name="name" :placeholder="$t('Name')"
+         required/>
       </label>
 
       <label class="grid-prezime">
@@ -55,7 +56,8 @@
 
 export default {
   data: () => ({
-    successAlert: false
+    successAlert: false,
+    error: "greška"
   }),
   methods: {
     /* eslint-disable */

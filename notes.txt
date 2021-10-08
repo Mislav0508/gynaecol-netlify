@@ -1,0 +1,10 @@
+FAUNA DB:
+1. Create your database
+2. Import a Schema (.gql)
+3. Create a secret key under Security. Role - Server
+
+NETLIFY FUNCTIONS:
+1. default path: /.netlify/functions/getMagazines
+2. configure redirects in netlify.toml
+
+
