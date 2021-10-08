@@ -4,7 +4,7 @@ FAUNA DB:
 3. Create a secret key under Security. Role - Server
 
 NETLIFY FUNCTIONS:
-1. default path: /.netlify/functions/getMagazines
-2. configure redirects in netlify.toml
+1. default path: /.netlify/functions/:splat
+2. configure netlify.toml
 
 
