@@ -6,7 +6,7 @@ export default {
   ssr: true,
 
   env: {
-    baseURL: process.env.BASE_URL
+    baseURL: process.env.BASE_URL || "https://gynaecol.netlify.app/"
   },
 
   head: {
