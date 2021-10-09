@@ -7,4 +7,11 @@ NETLIFY FUNCTIONS:
 1. default path: /.netlify/functions/:splat
 2. configure netlify.toml
 
+NETLIFY DOMAIN SETUP:
+1. Add new custom domain in netlify
+2. Under domain management, check dns configuration and copy the 4 nameservers
+3. Set up Netlify DNS for your domain
+4. Login to totohost.hr (not cpanel) and change domain nameservers
+5. Wait up to 48 hours for the changes to propagate
+
 
