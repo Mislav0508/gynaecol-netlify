@@ -77,7 +77,8 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    'nuxt-i18n',    
+    'nuxt-i18n',   
+    ['nuxt-canonical', { baseUrl: 'https://gynaecolperinatol.hr/' }] 
   ],
 
   i18n: {
