@@ -15,3 +15,7 @@ NETLIFY DOMAIN SETUP:
 5. Wait up to 48 hours for the changes to propagate
 
 
+DNS:
+
+Under domain management in netlify add a custom domain.
+Copy the domain name servers to your domain provider

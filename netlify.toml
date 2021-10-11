@@ -7,6 +7,12 @@
   to = ".netlify/functions/:splat"
   status = 200
 
+[[redirects]]
+  from = "https://gynaecol.netlify.app"
+  to = "https://mislavcrnkovic.com"
+  status = 301
+  force = true
+
 
 
 
