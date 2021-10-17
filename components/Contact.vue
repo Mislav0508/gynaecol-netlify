@@ -10,6 +10,7 @@
     class="contact-grid"
     name="contactForm"
     method="POST" 
+    data-netlify-recaptcha="true"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
     @submit.prevent="sendMessage"
@@ -45,6 +46,8 @@
       class="grid-alert"
       type="success"
       >{{ $t('Form_Success_Alert') }}</v-alert>
+
+      <div class="grid-recaptcha" data-netlify-recaptcha="true"></div>
 
     </form>
 
@@ -125,7 +128,8 @@ export default {
   "s s p p"
   "m m m m"
   "b b b b"
-  "a a a a";
+  "a a a a"
+  "r r r r";
 }
 #grid-name,#grid-prezime,#grid-predmet,#grid-email,#grid-komentar{
   width: 100%;
@@ -160,6 +164,9 @@ export default {
 .grid-alert{
   grid-area: a;
 }
+.grid-recaptcha{
+  grid-area: r;
+}
 .grid-submit-btn:hover{
   opacity: 0.8;
 
@@ -179,7 +186,8 @@ input,textarea{
     "p"
     "m"
     "b"
-    "a";
+    "a"
+    "r";
   }
   .contact-container{
     min-width: 100%;
