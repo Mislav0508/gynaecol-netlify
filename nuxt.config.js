@@ -76,19 +76,10 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/recaptcha',
     '@nuxtjs/axios',
     'nuxt-i18n',   
     ['nuxt-canonical', { baseUrl: 'https://gynaecolperinatol.hr/' }] 
   ],
-
-  recaptcha: {
-    hideBadge: false, // Hide badge element (v3 & v2 via size=invisible)
-    language: "en",   // Recaptcha language (v2)
-    siteKey: process.env.SITE_RECAPTCHA_KEY,    // Site key for requests
-    version: 3,     // Version
-    size: "normal"        // Size: 'compact', 'normal', 'invisible' (v2)
-  },
 
   i18n: {
     strategy: 'prefix_except_default',
@@ -130,10 +121,6 @@ export default {
     axios: {
       browserBaseURL: 'https://gynaecolperinatol.hr/'
     },
-    recaptcha: {
-      /* reCAPTCHA options */
-      siteKey: process.env.SITE_RECAPTCHA_KEY // for example
-    }
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
