@@ -10,6 +10,7 @@
     class="contact-grid"
     name="contactForm"
     method="POST" 
+    data-netlify-recaptcha="true"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
     @submit.prevent="sendMessage"
@@ -46,6 +47,14 @@
       type="success"
       >{{ $t('Form_Success_Alert') }}</v-alert>
 
+      <div class="grid-recaptcha d-flex justify-center align-center flex-column">
+        <recaptcha />
+        <small>This site is protected by reCAPTCHA and the Google 
+            <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+            <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+        </small>
+      </div>
+
     </form>
 
   </div>
@@ -68,7 +77,17 @@ export default {
             .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
             .join("&")
     },
-    sendMessage: function(event) {
+    sendMessage: async function(event) {
+      try {
+        var token = await this.$recaptcha.execute('login')
+        console.log('ReCaptcha token:', token)
+
+        // send token to server alongside your form data
+
+
+      } catch (error) {
+        console.log('Login error:', error)
+      }
       this.successAlert = true
       const { name, lastName, subject, email, comment } = Object.fromEntries(new FormData(event.target))
       let message = { name, lastName, subject, email, comment }
@@ -78,6 +97,7 @@ export default {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: this.encode({
+          "g-recaptcha-response": token,
           "form-name": "contactForm",
           ...message
           })
@@ -89,6 +109,16 @@ export default {
         }, 3500)
       }).catch(error => alert(error))
     }
+  },
+  async mounted() {
+    try {
+      await this.$recaptcha.init()
+    } catch (e) {
+      console.error(e);
+    }
+  },
+  beforeDestroy() {
+    this.$recaptcha.destroy()
   }
 }
 </script>
@@ -125,7 +155,8 @@ export default {
   "s s p p"
   "m m m m"
   "b b b b"
-  "a a a a";
+  "a a a a"
+  "r r r r";
 }
 #grid-name,#grid-prezime,#grid-predmet,#grid-email,#grid-komentar{
   width: 100%;
@@ -182,7 +213,8 @@ input,textarea{
     "p"
     "m"
     "b"
-    "a";
+    "a"
+    "r";
   }
   .contact-container{
     min-width: 100%;
