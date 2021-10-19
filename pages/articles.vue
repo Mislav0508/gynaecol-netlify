@@ -80,7 +80,7 @@ export default {
     },
     handleClick: function(row) {
       console.log("row articles", row);
-      window.open('https://api.gynaecolperinatol.hr/pdf/' + row.pdf + ".pdf", '_blank');
+      window.open('https://gynaecol.netlify.app/pdf/' + row.pdf + ".pdf", '_blank');
     }
   },
   mounted() {
