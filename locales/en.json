@@ -47,7 +47,13 @@
   "navbar_supplements": "Supplements",
   "navbar_about": "About us",
   "articles_title": "Articles",
-  "supplements_title": "Supplements"
-
-
+  "supplements_title": "Supplements",
+  "meta_home_name": "Gynaecologia et perinatologia | Home",
+  "meta_keywords_home": "gynecology, perinatology, magazine",
+  "meta_about_name": "Gynaecologia et perinatologia | About",
+  "meta_keywords_about": "gynecology, perinatology, about",
+  "meta_articles_name": "Gynaecologia et perinatologia | Articles",
+  "meta_keywords_articles": "gynecology, perinatology, articles",
+  "meta_supplements_name": "Gynaecologia et perinatologia | Supplements",
+  "meta_keywords_supplements": "gynecology, perinatology, supplements"
 }

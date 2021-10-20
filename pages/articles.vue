@@ -30,20 +30,28 @@
 <script>
 import axios from "axios"
 export default {
-  head: {
-  title: `Gynaecologia et perinatologia | Articles`,
-  meta: [
-    {
-      hid: 'Articles',
-      name: 'Gynaecologia et perinatologia | Articles',
-      content: 'Gynaecologia et perinatologia | Articles'
-    },
-    {
-      hid: `keywords`,
-      name: 'keywords',
-      keywords: 'ginekologija, perinatologija, articles'
+  nuxtI18n: {
+    paths: {
+      en: '/articles', 
+      hr: '/clanci'
     }
-  ],
+  },
+  head() {
+    return {
+      title: this.$t('meta_articles_name'),
+      meta: [
+        {
+          hid: 'articles_name_hid',
+          name: this.$t('meta_articles_name'),
+          content: this.$t('meta_articles_name')
+        },
+        {
+          hid: `articles_keywords_hid`,
+          name: 'keywords',
+          keywords: this.$t('meta_keywords_articles')
+        }
+      ],
+    }
   },
   data () {
     return {
@@ -63,7 +71,7 @@ export default {
     }
   },
   methods: {
-    fetchAllMagazines: async function() {
+    fetchAllMagazines: async function() { 
       const response = await axios.get("/.netlify/functions/getMagazines", {
         headers: {
           "Access-Control-Allow-Origin": "*",

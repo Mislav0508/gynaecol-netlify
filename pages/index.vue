@@ -68,20 +68,28 @@
 <script>
 
 export default {
-  head: {
-    title: 'Gynaecologia et perinatologia',
-    meta: [
-      {
-        hid: 'Home',
-        name: 'Gynaecologia et perinatologia | Home',
-        content: 'Gynaecologia et perinatologia | Home'
-      },
-      {
-        hid: `keywords`,
-        name: 'keywords',
-        keywords: 'ginekologija, perinatologija, časopis'
-      }
-    ],
+  nuxtI18n: {
+    paths: {
+      en: '/', 
+      hr: '/'
+    }
+  },
+  head() {
+    return {
+      title: this.$t('meta_home_name'),
+      meta: [
+        {
+          hid: 'home_name_hid',
+          name: this.$t('meta_home_name'),
+          content: this.$t('meta_home_name')
+        },
+        {
+          hid: `home_keywords_hid`,
+          name: 'keywords',
+          keywords: this.$t('meta_keywords_home')
+        }
+      ],
+    }
   }
 }
 </script>

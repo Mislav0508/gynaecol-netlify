@@ -31,20 +31,28 @@
 /* eslint-disable */
 import axios from "axios"
 export default {
-  head: {
-  title: `Gynaecologia et perinatologia | Supplements`,
-  meta: [
-    {
-      hid: 'Supplements',
-      name: 'Gynaecologia et perinatologia | Supplements',
-      content: 'Gynaecologia et perinatologia | Supplements'
-    },
-    {
-      hid: `keywords`,
-      name: 'keywords',
-      keywords: 'ginekologija, perinatologija, supplements'
+  nuxtI18n: {
+    paths: {
+      en: '/supplements', 
+      hr: '/suplementi'
     }
-    ],
+  },
+  head() {
+    return {
+      title: this.$t('meta_supplements_name'),
+      meta: [
+        {
+          hid: 'supplements_name_hid',
+          name: this.$t('meta_supplements_name'),
+          content: this.$t('meta_supplements_name')
+        },
+        {
+          hid: `supplements_keywords_hid`,
+          name: 'keywords',
+          keywords: this.$t('meta_keywords_supplements')
+        }
+      ],
+    }
   },
   data () {
     return {

@@ -47,7 +47,15 @@
   "navbar_supplements": "Suplementi",
   "navbar_about": "O nama",
   "articles_title": "Članci",
-  "supplements_title": "Suplementi"
+  "supplements_title": "Suplementi",
+  "meta_home_name": "Gynaecologia et perinatologia | Početna",
+  "meta_keywords_home": "ginekologija, perinatologija, časopis",
+  "meta_about_name": "Gynaecologia et perinatologia | O nama",
+  "meta_keywords_about": "ginekologija, perinatologija, o nama",
+  "meta_articles_name": "Gynaecologia et perinatologia | Časopisi",
+  "meta_keywords_articles": "ginekologija, perinatologija, časopisi",
+  "meta_supplements_name": "Gynaecologia et perinatologia | Suplementi",
+  "meta_keywords_supplements": "ginekologija, perinatologija, suplementi"
 
 
 }
