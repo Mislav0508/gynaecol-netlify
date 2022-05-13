@@ -66,7 +66,7 @@
 </template>
 
 <script>
-
+import { mapGetters, mapActions } from 'vuex'
 export default {
   nuxtI18n: {
     paths: {
@@ -90,6 +90,18 @@ export default {
         }
       ],
     }
+  },
+  computed: {
+    ...mapGetters({
+      user: 'auth/user'
+    })
+  },
+  methods: {
+    ...mapActions({
+      openLogin: 'auth/openLogin',
+      openSignup: 'auth/openSignup',
+      logout: 'auth/logout'
+    })
   }
 }
 </script>

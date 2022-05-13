@@ -34,7 +34,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-
+    { src: '~/plugins/netlify-identity-widget.js', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -78,6 +78,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/toast',
     'nuxt-i18n',   
     ['nuxt-canonical', { baseUrl: 'https://gynaecolperinatol.hr/' }] 
   ],
@@ -111,6 +112,13 @@ export default {
         }
       }
     }
+  },
+
+  toast: {
+    position: 'bottom-center',
+    duration: 5000,
+    theme: 'bubble',
+    register: []
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
