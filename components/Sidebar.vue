@@ -72,6 +72,27 @@
           </v-list-item>            
         </NuxtLink>
 
+        <client-only>
+          <div class="flex justify-center mt-10">
+            <template v-if="user">
+              <v-list-item @click.prevent="onLogout">
+                  <font-awesome-icon class="onama-icon" :icon="['fas', 'key']"/> 
+                  Logout
+              </v-list-item> 
+            </template>
+            <template v-else>
+              <v-list-item @click.prevent="openLogin">
+                  <font-awesome-icon class="onama-icon" :icon="['fas', 'key']"/> 
+                  Login
+              </v-list-item> 
+              <v-list-item @click.prevent="openSignup">
+                  <font-awesome-icon class="onama-icon" :icon="['fas', 'user']"/> 
+                  Sign up
+              </v-list-item> 
+            </template>
+          </div>
+        </client-only>
+
         <LanguageInput v-if="$vuetify.breakpoint.xsOnly" class="mt-5"/>
 
         </v-list-item-group>
@@ -85,6 +106,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import LanguageInput from "./LanguageInput.vue"
 export default {
   components: { LanguageInput },
@@ -92,11 +114,28 @@ export default {
     drawer: false,
     group: null
   }),
-
+  computed: {
+    ...mapGetters({
+      user: 'auth/user'
+    })
+  },
   watch: {
     group () {
       this.drawer = false
     },
+  },
+  methods: {
+    onLogout() {
+      this.logout()
+      if (this.$route.path !== '/') {
+        this.$router.push('/')
+      }
+    },
+    ...mapActions({
+      openLogin: 'auth/openLogin',
+      openSignup: 'auth/openSignup',
+      logout: 'auth/logout'
+    })
   },
 }
 </script>
