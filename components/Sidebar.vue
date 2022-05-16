@@ -49,6 +49,13 @@
             <font-awesome-icon class="onama-icon" :icon="['fas', 'home']"/>              
             {{ $t('navbar_home') }}      
           </v-list-item>        
+        </NuxtLink> 
+
+        <NuxtLink :to="localePath('/blog')" class="link">
+          <v-list-item > 
+            <font-awesome-icon class="onama-icon" :icon="['fas', 'blog']"/>              
+            Blog     
+          </v-list-item>        
         </NuxtLink>
 
         <NuxtLink :to="localePath('articles')" class="link">
