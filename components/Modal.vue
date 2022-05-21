@@ -117,6 +117,14 @@
 export default {
 data: () => ({
     dialog: false,
+    author: '',
+    date: '',
+    language: '',
+    page: '',
+    pdf: '',
+    title: '',
+    type: '',
+    volume: null
   }),
 }
 </script>

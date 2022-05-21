@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "gynaecol",
+  "private_key_id": "3fac4d776e961b0bd939f4f268b11c6a884d607e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCb9FCAuhB5Iu9O\nXEJxySNM7cfZ3HyEoigXND4rd0QyTonjY1dwjk+cRnfSB/58Pa0yuirBWVltQzBw\n9uAAbudMrfCHb7oiniziSiu3oedYgQAF+on/PJO9+3W0//XqWias339ROEGK+zcS\nxXjYOMHZ8+n07+1wPntZAoKVt2lX7rF93gkebaFt3vpEr5jWyaylqghOQ5RbNH6J\nlwZEVHbLlD70AfgR0wZY6K/tKnBp4gOgf+tLjNN/VLrLuJtTmKTME96xlaKTd41n\nqgbkznvdY8+FRVdGpJodvPHXeLQcddmgh+8G4z5xeresonds58HFUGh4gIx6AnWk\nwgvQU/FjAgMBAAECggEANvBPN7nUOchLwzAPHCR+MgiF4cKhftvdAaeeyxMdzBcM\nzjTdxcHsW6IbbbrxNHVJwVgB3dELBsmnk/P0H1LyWnngBOYgDTfpmeIFGpCHfg8b\nof+Lg4WkikW+Rn/w8pjFjRrCsCsAM+ShlxRHqOv9pjkdzvKCk4r/SvDuba2KB7Z6\nHwhyaLMXaNxiiTusxQo7QjzKfqX3r4HnYT+iNCLdG06ji5dJiNVbcN2y4jytBXYl\nGnj3UH+yt0lUsGDDGtutMPUTAWiEKGmZW7oTTUPppNNZnRSojDDuzwn9o4MPDJ/3\nSu2fy4SUbiTo/FqDbnaFx8PcrILUBlHaExfURkUiqQKBgQDbSgIdmfhuvVvuASsW\nAg25vItvrCgXGyYGzppq7QAZVvV4pdC8Zs3YRbvwSkzZoKUljdMD64Qs4ligS9/0\nS++QsErm/2MM7g3J6RiM2OEtWTgmX2GQPuHxyynFgDcHx+ung9LPjx40olBxJEYv\n0RVAnHGMpNXF9xhjFgV8Faw1pwKBgQC2D/4Z1RlOdKLmlts77zD5Nvt7YH3c1r4Z\nfNXp/o3pYRt3YtdIJwB5tP+qYVk74ZBm4xJdqXkE68dxzWTqoSwFoYrlBIjyUD7B\nAcjf4SgCm31d8OrBmT9FHTgj6HPdUpw5/0ppDKxBkLMsLvh5fv4iklZPZeWELara\nReLhErzV5QKBgQCe04SiwgEg2/+4a5o0T3p3e2sWj/9ddOle5scLCOsYb1ZNcvOz\ncVZH/YH4sSfmPCdBAu7CGRPbmnkMaMglXdZ+2mD13CV2mPjds/l3EiJNwSAdEtpM\nKm9lvHtds9anyRISezT15je/cYyH1fkL6wjUijrn3f+Dact9ANcqH1xiYwKBgHj/\nv/0jJ6KA2hMuh54Zpg67f//LbVrsTYNa+EB/sYk9xKdfxXxqj2JT7Ocrs8acbwAy\nQe6Fx6yBlxgHTd6yJzPG3SzACtQgiNR1fy9r0M+Kz5MznpH0a5xfgwQ6ZWbelH3n\nMWkHxyP8K1heDz2QLQ6E+1/hdNyYDUjr0ZGMhnwRAoGADwibh/G9RiRT4su+dkVA\nZg/m5v8jurZa9zuTdwrSbtEWB8GWHYzs7op9dtr2COr+oBytFYkUeuPdgrZycTlz\nRTpFXxGBiGdAOvR5j2dAOECqWJ6y0U3epbmJXg4f+IIjEwrxc79ymU2RArc4a6X8\ni34cy05xMxhdhGPY+Mu95y8=\n-----END PRIVATE KEY-----\n",
+  "client_email": "gynaecol@gynaecol.iam.gserviceaccount.com",
+  "client_id": "105692840257315206123",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gynaecol%40gynaecol.iam.gserviceaccount.com"
+}

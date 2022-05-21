@@ -1,5 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
 import i18n from './config/i18n'
+require('dotenv').config()
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   target: 'static',
@@ -25,6 +26,9 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      { src: 'https://apis.google.com/js/api.js' }
     ]
   },
 
@@ -76,7 +80,7 @@ export default {
   },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
+    '@nuxtjs/dotenv',
     '@nuxtjs/axios',
     '@nuxtjs/toast',
     'nuxt-i18n',   
