@@ -1,8 +1,8 @@
 <template>
   <v-container>
     Blog
-    <Modal />
-    <v-btn @click="authenticate().then(loadClient)">authorize and load</v-btn>
+    <Modal @modal-data="modalData"/>
+    <v-btn @click="authenticate">authorize and load</v-btn>
     <v-btn @click="execute()">execute</v-btn>
     <v-file-input
       truncate-length="15"
@@ -21,7 +21,8 @@ export default {
   data() {
     return {
       file: null,
-      fileName: 'my file'
+      fileName: 'my file',
+      fileId: ''
     }
   },
   mounted() {
@@ -33,6 +34,9 @@ export default {
     });
   },
   methods: {
+    modalData: function(val) {
+      console.log("val",val);
+    },
     logFile: function() {
       console.log(this.file.name);
     },
@@ -40,17 +44,18 @@ export default {
       return gapi.auth2.getAuthInstance()
         .signIn({scope: "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.metadata https://www.googleapis.com/auth/drive.metadata.readonly https://www.googleapis.com/auth/drive.photos.readonly https://www.googleapis.com/auth/drive.readonly"})
         .then(function() { console.log("Sign-in successful"); },
-              function(err) { console.error("Error signing in", err); });
-    },
-    loadClient: function () {
-      gapi.client.setApiKey(process.env.GOOGLE_API_KEY);
-      return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/drive/v3/rest")
-          .then(function() { console.log("GAPI client loaded for API"); },
-            function(err) { console.error("Error loading GAPI client for API", err); });
+              function(err) { console.error("Error signing in", err); })
+        .then(function () {
+          gapi.client.setApiKey(process.env.GOOGLE_API_KEY);
+          return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/drive/v3/rest")
+              .then(function() { console.log("GAPI client loaded for API"); },
+                function(err) { console.error("Error loading GAPI client for API", err); });
+        })
     },
     execute: function () {
       return gapi.client.drive.files.list({
-        "corpora": "user"
+        q: "mimeType='application/vnd.google-apps.folder'",
+        name: 'Supplements'
       })
       .then(function(response) {
           // Handle the results here (response.result has the parsed body).
@@ -61,9 +66,6 @@ export default {
     uploadFile: async function () {
       var file = new Blob([this.file], {type: "application/pdf"});
       var metadata = {
-          "properties": {
-            "key": "string"
-          },
           "description": "my description",
           "name": this.file.name,
           "mimeType": "application/pdf",
@@ -82,20 +84,24 @@ export default {
           return res.json();
       }).then(function(val) {
           console.log(val);
+          // CALL NETLIFY FUNTION TO STORE DATA TO FAUNADB, ADD GOOGLE DRIVE ID
+
+          // END NETLIFY FUNCTION
       }).catch(err => console.log(err))
+
+      
     },
     downloadFile: async function () {
       var accessToken = gapi.auth.getToken().access_token;
-      // gapi.client.drive.files.get({
-      //   fileId: '1AR8lFgux9vL_XYNf0b36bxLNh83TM17t'
-      // }).then(async (response,rawData)=>{
-      //   console.log(response.result.name);
-      //   this.fileName = response.result.name
-      // }).catch(err => console.log(err))
+      var filename = gapi.client.drive.files.get({
+        fileId: '1i9aOEKf9Zp7UHqhFe1G6RaVdkLv9WHKl'
+      }).then(async (response,rawData)=>{
+        console.log(response.result.name);
+        return response.result.name
+      }).catch(err => console.log(err))
+      console.log(filename.Ne);
 
-      var filename = this.fileName
-
-      fetch(`https://www.googleapis.com/drive/v3/files/1AR8lFgux9vL_XYNf0b36bxLNh83TM17t?alt=media`, {
+      fetch(`https://www.googleapis.com/drive/v3/files/1i9aOEKf9Zp7UHqhFe1G6RaVdkLv9WHKl?alt=media`, {
           method: 'GET',
           headers: new Headers({ 'Authorization': 'Bearer ' + accessToken })
       }).then((res) => {
@@ -106,7 +112,7 @@ export default {
           const file = new File([val], 'test', {type: "application/pdf"})
           const elem = window.document.createElement('a');
           elem.href = window.URL.createObjectURL(file);
-          elem.download = filename;        
+          elem.download = filename.Ne;        
           document.body.appendChild(elem);
           elem.click();        
           document.body.removeChild(elem);
