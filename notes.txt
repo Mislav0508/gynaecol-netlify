@@ -19,3 +19,12 @@ DNS:
 
 Under domain management in netlify add a custom domain.
 Copy the domain name servers to your domain provider
+
+GOOGLE API:
+1. Create project and set up API KEY and CLIENT ID
+2. Insert google api script tag into nuxt.config.js
+
+NEXT STEPS: 
+1. While uploading, trigger function to insert data into faunadb using graphql. Learn about graphql mutations to insert document.
+2. We have Upload, List and Download file, add DELETE functionality.
+
