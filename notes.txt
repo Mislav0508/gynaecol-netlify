@@ -12,6 +12,10 @@ NETLIFY DOMAIN SETUP:
 2. Under domain management, check dns configuration and copy the 4 nameservers
 3. Set up Netlify DNS for your domain
 4. Login to totohost.hr (not cpanel) and change domain nameservers
+Domenski poslužitelji 1	dns1.p04.nsone.net
+Domenski poslužitelji 2	dns2.p04.nsone.net
+Domenski poslužitelji 3	dns3.p04.nsone.net
+Domenski poslužitelji 4	dns4.p04.nsone.net
 5. Wait up to 48 hours for the changes to propagate
 
 
@@ -29,3 +33,14 @@ NEXT STEPS:
 2. We have Upload, List and Download file - add DELETE functionality.
 3. Test google api pon /blog path, depending on the url, the user, logged in or not, mounted or not etc.
 
+mutation createMagazine {createMagazine(
+  data: {title: "TEST",
+    volume: 25,
+    page: "133 - 138",
+    date: "October - December 2016.",
+    author: "Davor Zoričić, Dragan Belci, Dino Bečić, Tomislav Perkov",
+    language: "EN",
+    type: "article",
+    pdf: "01_zoricic"}
+){title}
+}
