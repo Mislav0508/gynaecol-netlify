@@ -72,7 +72,7 @@
           </v-list-item>            
         </NuxtLink>
 
-        <client-only>
+        <!-- <client-only>
           <div class="flex justify-center mt-10">
             <template v-if="user">
               <v-list-item @click.prevent="onLogout">
@@ -91,7 +91,7 @@
               </v-list-item> 
             </template>
           </div>
-        </client-only>
+        </client-only> -->
 
         <LanguageInput v-if="$vuetify.breakpoint.xsOnly" class="mt-5"/>
 
