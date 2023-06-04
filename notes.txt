@@ -14,6 +14,10 @@ NETLIFY DOMAIN SETUP:
 4. Login to totohost.hr (not cpanel) and change domain nameservers
 5. Wait up to 48 hours for the changes to propagate
 
+ADDING PDFs:
+1. Add pdf document into FaunaDB collections.
+2. Commit the actual pdf file to the static/pdf
+
 
 DNS:
 
